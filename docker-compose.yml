@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  shop_service:
+    build: ./shop
+    container_name: shop-fastapi-service
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8001
+    volumes:
+      - ./shop/:/shop/
+    ports:
+      - "8001:8001"
+
+  nginx:
+    image: nginx:latest
+    container_name: wnginx
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./nginx/conf/conf.d/:/etc/nginx/conf.d
+      - ./nginx/conf/ssl/:/etc/nginx/ssl
+    depends_on:
+      - shop_service
+
+  database:
+    build:
+      context: ./database
+    volumes:
+      - ./database:/var/www/database
+    ports:
+      - "33061:33061"
+    environment:
+      - MYSQL_DATABASE=wechat_shop
+      - MYSQL_USER=shop_admin
+      - MYSQL_PASSWORD=c2hvcDEyMzQ1Ng==
+      - MYSQL_ROOT_PASSWORD=c2hvcDEyMzQ1
