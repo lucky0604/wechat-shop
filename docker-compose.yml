@@ -10,6 +10,14 @@ services:
     ports:
       - "8001:8001"
 
+  shop_spider:
+    build: ./scraper
+    volumes:
+      - ./scraper/:/scraper/
+    command: python run_spider.py test
+    depends_on:
+      - shop_service
+
   nginx:
     image: nginx:latest
     container_name: wnginx
