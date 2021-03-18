@@ -12,9 +12,10 @@ services:
 
   shop_spider:
     build: ./scraper
+    container_name: shop-spider
     volumes:
       - ./scraper/:/scraper/
-    command: python run_spider.py test
+    command: python app/run_spider.py shop
     depends_on:
       - shop_service
 

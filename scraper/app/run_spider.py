@@ -6,3 +6,19 @@
 @File    : run_spider.py
 @Desc    : Description about this file
 """
+import os
+import sys
+from spiders.test import ShopSpider
+from scrapy.crawler import CrawlerProcess
+from scrapy.utils.project import get_project_settings
+
+if __name__ == '__main__':
+    mode = sys.argv[1]
+    os.environ['SCRAPY_SETTINGS_MODULE'] = f'settings'
+    settings = get_project_settings()
+    process = CrawlerProcess(settings)
+    mode_to_spider = {
+        'shop': ShopSpider
+    }
+    process.crawl(mode_to_spider[mode])
+    process.start()

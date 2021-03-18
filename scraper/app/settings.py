@@ -33,16 +33,16 @@ DOWNLOADER_MIDDLEWARES = {
     # 'weibo.middlewares.UserAgentMiddleware': None,
     'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': None,
     'scrapy.downloadermiddlewares.redirect.RedirectMiddleware': None,
-    'middlewares.CookieMiddleware': 300,
-    'middlewares.RedirectMiddleware': 200,
+    # 'middlewares.CookieMiddleware': 300,
+    # 'middlewares.RedirectMiddleware': 200,
     'middlewares.IPProxyMiddleware': 100,
     'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 101,
 
 }
 
-ITEM_PIPELINES = {
-    'pipelines.MongoDBPipeline': 300,
-}
+# ITEM_PIPELINES = {
+#     'pipelines.MongoDBPipeline': 300,
+# }
 
 # MongoDb Config
 '''

@@ -20,3 +20,4 @@ class IPProxyMiddleware(object):
             current_proxy = f'http://{proxy_data}'
             spider.logger.debug(f"current proxy:{current_proxy}")
             request.meta['proxy'] = current_proxy
+
