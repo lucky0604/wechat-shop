@@ -45,10 +45,8 @@ DOWNLOADER_MIDDLEWARES = {
 # }
 
 # MongoDb Config
-'''
 MONGO_HOST = 'mongodb'
 MONGO_PORT = 27017
-'''
 
 
 # Redis Config

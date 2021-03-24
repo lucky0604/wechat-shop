@@ -3,7 +3,7 @@
 @Time    : 3/23/21 1:27 PM
 @Author  : Lucky
 @Email   : lucky_soft@163.com
-@File    : item.py
+@File    : items.py
 @Desc    : Description about this file
 """
 from scrapy import Item, Field
@@ -14,3 +14,5 @@ class IndexItem(Item):
     item_desc = Field()
     item_title = Field()
     item_price = Field()
+    item_crawl_time = Field()
+    item_url = Field()

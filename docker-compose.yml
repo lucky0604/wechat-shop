@@ -42,3 +42,22 @@ services:
       - MYSQL_USER=shop_admin
       - MYSQL_PASSWORD=c2hvcDEyMzQ1Ng==
       - MYSQL_ROOT_PASSWORD=c2hvcDEyMzQ1
+
+  mongodb:
+    image: mongo
+    volumes:
+      - ./mongodb:/data/db
+    ports:
+      - 7001:27017
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 7002:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+    depends_on:
+      - mongodb
