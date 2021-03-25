@@ -8,7 +8,7 @@
 """
 import os
 import sys
-from spiders.test import ShopSpider
+from spiders.shop import ShopSpider
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
@@ -20,5 +20,6 @@ if __name__ == '__main__':
     mode_to_spider = {
         'shop': ShopSpider
     }
+    print(mode_to_spider[mode], ' ------ start spider --------')
     process.crawl(mode_to_spider[mode])
     process.start()

@@ -40,9 +40,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 }
 
-# ITEM_PIPELINES = {
-#     'pipelines.MongoDBPipeline': 300,
-# }
+ITEM_PIPELINES = {
+    'pipelines.MongoDBPipeline': 300,
+}
 
 # MongoDb Config
 MONGO_HOST = 'mongodb'
@@ -50,19 +50,17 @@ MONGO_PORT = 27017
 
 
 # Redis Config
-'''
 REDIS_HOST = 'redis'
 REDIS_PORT = 6379
-'''
 
 # Ensure use this Scheduler
-# SCHEDULER = "scrapy_redis_bloomfilter.scheduler.Scheduler"
+SCHEDULER = "scrapy_redis_bloomfilter.scheduler.Scheduler"
 
 # Ensure all spiders share same duplicates filter through redis
-# DUPEFILTER_CLASS = "scrapy_redis_bloomfilter.dupefilter.RFPDupeFilter"
+DUPEFILTER_CLASS = "scrapy_redis_bloomfilter.dupefilter.RFPDupeFilter"
 
 # Redis URL
-# REDIS_URL = 'redis://{}:{}'.format(REDIS_HOST, REDIS_PORT)
+REDIS_URL = 'redis://{}:{}'.format(REDIS_HOST, REDIS_PORT)
 
 # Number of Hash Functions to use, defaults to 6
 BLOOMFILTER_HASH_NUMBER = 6

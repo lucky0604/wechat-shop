@@ -15,10 +15,10 @@ class MongoDBPipeline(object):
     def __init__(self):
         client = pymongo.MongoClient(MONGO_HOST, MONGO_PORT)
         db = client["shop"]
-        self.ShopItems = db["Shop"]
+        self.ShopItems = db["ShopDB"]
 
     def process_item(self, item, spider):
-        if spider.name == "shop":
+        if spider.name == "shop_spider":
             self.insert_item(self.ShopItems, item)
         return item
 

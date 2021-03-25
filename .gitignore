@@ -141,3 +141,5 @@ dmypy.json
 
 # vim
 .vim/
+mongodb/
+redis/
