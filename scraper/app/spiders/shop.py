@@ -19,16 +19,21 @@ class ShopSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        myparser = etree.HTMLParser(encoding="utf-8")
-        tree_node = etree.HTML(response.body, parser=myparser)
-        good_list = tree_node.xpath('//li[@class="f-product inline-block"]')
-        print(good_list, ' ------ print body ----')
-        for item in good_list:
-            shop_item = IndexItem()
-            shop_item["item_desc"] = item.xpath('.//img/@src')
-            yield shop_item
-        # for item in response.css('li.f-product').getall():
+        # myparser = etree.HTMLParser(encoding="utf-8")
+        # tree_node = etree.HTML(response.body, parser=myparser)
+        # good_list = tree_node.xpath('//li[@class="f-product"]')
+        # print(good_list, ' ------ print body ----')
+        # for item in good_list:
         #     shop_item = IndexItem()
-        #     # shop_item["item_desc"] = item.css('img.').get()
-        #     shop_item["item_desc"] = item
+        #     shop_item["item_desc"] = item.xpath('.//img/@src')
         #     yield shop_item
+        li_list = response.xpath('//li[@class="inline-block f-product"]')
+        print(li_list, ' ---- li list -------')
+        for item in li_list:
+            print(item, ' ----- item ------')
+            shop_item = IndexItem()
+            # shop_item["item_desc"] = item.css('img.').get()
+            print(item.xpath('.//p[@class="product_desc"]/text()'), ' ---- item desc ------')
+            shop_item["item_desc"] = item.xpath('.//p[@class="product_desc"]/text()').extract()[0]
+
+            yield shop_item
